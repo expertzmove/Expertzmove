@@ -212,6 +212,39 @@ const FAQ = [
   },
 ];
 
+const CANDLES = Array.from({ length: 40 }).map((_, i) => {
+  const isGreen = Math.random() > 0.45;
+  const height = 15 + Math.random() * 40; 
+  const top = 20 + Math.random() * 30; 
+  const wickTop = top - Math.random() * 15;
+  const wickBottom = top + height + Math.random() * 15;
+  return { isGreen, height, top, wickTop, wickBottom };
+});
+
+function CandleBackground() {
+  const items = [...CANDLES, ...CANDLES];
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 mix-blend-screen" aria-hidden="true">
+      <div className="flex gap-4 md:gap-8 h-full animate-candle-scroll w-max pr-4 md:pr-8">
+        {items.map((c, i) => (
+          <div key={i} className="relative w-2 md:w-4 shrink-0 h-full flex flex-col justify-center">
+            {/* Wick */}
+            <div 
+              className={`absolute left-1/2 -translate-x-1/2 w-px md:w-0.5 rounded-full ${c.isGreen ? 'bg-cyan-glow' : 'bg-destructive'} opacity-60`} 
+              style={{ top: `${c.wickTop}%`, bottom: `${100 - c.wickBottom}%` }} 
+            />
+            {/* Body */}
+            <div 
+              className={`absolute left-0 w-full rounded-sm md:rounded-md ${c.isGreen ? 'bg-cyan-glow' : 'bg-destructive'} shadow-[0_0_15px_currentColor] opacity-90`} 
+              style={{ top: `${c.top}%`, height: `${c.height}%` }} 
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ------------------ Page ------------------ */
 
 function Landing() {
@@ -231,7 +264,8 @@ function Landing() {
 
 function Hero() {
   return (
-    <section id="top" className="relative pt-40 pb-20 flex flex-col items-center text-center px-6">
+    <section id="top" className="relative pt-40 pb-20 flex flex-col items-center text-center px-6 overflow-hidden">
+      <CandleBackground />
       <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-cyan-glow/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
       
       <Reveal delay={0}>

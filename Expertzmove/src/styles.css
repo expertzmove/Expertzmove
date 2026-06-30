@@ -142,6 +142,19 @@
   animation: ticker-scroll 40s linear infinite;
 }
 
+/* Candle Scroll Background */
+@keyframes candle-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@utility animate-candle-scroll {
+  animation: candle-scroll 80s linear infinite;
+}
+
 /* Bento Grid */
 @utility bento-grid {
   display: grid;

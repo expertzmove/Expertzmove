@@ -216,18 +216,18 @@ function Landing() {
 
 function Nav() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl bg-background/50 border-b border-border/30">
-      <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 hover:opacity-80 transition">
-          <div className="bg-foreground text-background font-display font-bold text-lg px-2.5 py-1 rounded-sm flex items-center justify-center leading-none tracking-tighter">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[800px]">
+      <header className="backdrop-blur-3xl bg-surface/60 border border-border/50 shadow-2xl rounded-full px-4 md:px-6 h-14 flex items-center justify-between transition-all duration-300">
+        <a href="#top" className="flex items-center gap-2 hover:opacity-80 transition">
+          <div className="bg-foreground text-background font-display font-bold text-base px-2 py-0.5 rounded-sm flex items-center justify-center leading-none tracking-tighter">
             EM
           </div>
-          <div className="flex flex-col justify-center text-foreground font-display font-semibold text-[10px] leading-tight tracking-[0.2em] uppercase">
+          <div className="hidden sm:flex flex-col justify-center text-foreground font-display font-semibold text-[9px] leading-tight tracking-[0.2em] uppercase">
             <span>Expertz</span>
             <span>Move</span>
           </div>
         </a>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
           <a href="#platform" className="hover:text-foreground transition-colors">
             Platform
           </a>
@@ -238,24 +238,24 @@ function Nav() {
             Pricing
           </a>
         </nav>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 md:gap-5">
           <a
             href="https://t.me/Xonix_Support"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:flex items-center text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
           >
             <Send className="w-4 h-4" />
           </a>
           <a
             href="#pricing"
-            className="text-sm font-semibold px-5 py-2.5 rounded-full bg-foreground text-background hover:scale-105 transition-transform"
+            className="text-xs md:text-sm font-semibold px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-foreground text-background hover:scale-105 transition-transform"
           >
             Start Trading
           </a>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
 
@@ -274,13 +274,13 @@ function Hero() {
       </Reveal>
 
       <Reveal delay={100}>
-        <h1 className="font-display text-6xl md:text-8xl font-bold leading-[0.9] tracking-tight max-w-5xl mx-auto">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1] md:leading-[0.9] tracking-tight max-w-5xl mx-auto">
           Trading, <span className="text-muted-foreground">on autopilot.</span>
         </h1>
       </Reveal>
 
       <Reveal delay={200}>
-        <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-6 md:mt-8 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           The most advanced AI trading toolkit built for modern markets. 
           Connect your exchange, pick a strategy, and step away from the charts.
         </p>

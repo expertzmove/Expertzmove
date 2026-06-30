@@ -157,12 +157,12 @@ const STRATEGY_PRESETS = [
     focus: "Multi-timeframe trend + news filter",
   },
   {
-    name: "Coming soon",
+    name: "Power Ai bot",
     icon: Radar,
-    winRate: 0,
-    edge: 0,
-    drawdown: 0,
-    focus: "In development...",
+    winRate: 58,
+    edge: 0.29,
+    drawdown: 5.4,
+    focus: "Momentum breakout and volatility guard",
   },
   {
     name: "Coming soon",

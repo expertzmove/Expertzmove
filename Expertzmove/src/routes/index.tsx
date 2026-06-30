@@ -39,6 +39,8 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { Nav } from "../components/Nav";
+import { Footer } from "../components/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -205,56 +207,8 @@ function Landing() {
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
       <Hero />
       <BentoSection />
-      <Pricing />
       <Faq />
       <Footer />
-    </div>
-  );
-}
-
-/* ------------------ Nav ------------------ */
-
-function Nav() {
-  return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[800px]">
-      <header className="backdrop-blur-3xl bg-surface/60 border border-border/50 shadow-2xl rounded-full px-4 md:px-6 h-14 flex items-center justify-between transition-all duration-300">
-        <a href="#top" className="flex items-center gap-2 hover:opacity-80 transition">
-          <div className="bg-foreground text-background font-display font-bold text-base px-2 py-0.5 rounded-sm flex items-center justify-center leading-none tracking-tighter">
-            EM
-          </div>
-          <div className="hidden sm:flex flex-col justify-center text-foreground font-display font-semibold text-[9px] leading-tight tracking-[0.2em] uppercase">
-            <span>Expertz</span>
-            <span>Move</span>
-          </div>
-        </a>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <a href="#platform" className="hover:text-foreground transition-colors">
-            Platform
-          </a>
-          <a href="#strategies" className="hover:text-foreground transition-colors">
-            Strategies
-          </a>
-          <a href="#pricing" className="hover:text-foreground transition-colors">
-            Pricing
-          </a>
-        </nav>
-        <div className="flex items-center gap-3 md:gap-5">
-          <a
-            href="https://t.me/Xonix_Support"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Send className="w-4 h-4" />
-          </a>
-          <a
-            href="#pricing"
-            className="text-xs md:text-sm font-semibold px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-foreground text-background hover:scale-105 transition-transform"
-          >
-            Start Trading
-          </a>
-        </div>
-      </header>
     </div>
   );
 }
@@ -289,7 +243,7 @@ function Hero() {
       <Reveal delay={300}>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a
-            href="#pricing"
+            href="/pricing"
             className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-semibold hover:scale-105 transition-transform"
           >
             Deploy Your First Bot
@@ -471,61 +425,6 @@ function TradingViewWidget() {
   );
 }
 
-/* ------------------ Pricing ------------------ */
-
-function Pricing() {
-  return (
-    <section id="pricing" className="py-32 px-6 max-w-[1400px] mx-auto">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="font-display text-4xl md:text-5xl font-bold">Simple, transparent pricing.</h2>
-        <p className="mt-4 text-lg text-muted-foreground">Start for free, upgrade when you need more power.</p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div className="bento-card p-10">
-          <h3 className="text-2xl font-bold font-display">Starter</h3>
-          <div className="mt-4 flex items-baseline gap-2">
-            <span className="text-5xl font-bold font-display">$0</span>
-            <span className="text-muted-foreground font-medium">/ forever</span>
-          </div>
-          <p className="mt-4 text-muted-foreground text-sm">Perfect for testing the waters and learning the ropes.</p>
-          <ul className="mt-8 space-y-4">
-            {["1 active bot", "Paper trading", "Daily recap emails", "Community access"].map((feature, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm font-medium">
-                <Check className="w-5 h-5 text-foreground" /> {feature}
-              </li>
-            ))}
-          </ul>
-          <button className="w-full mt-10 py-4 rounded-xl border border-border font-bold hover:bg-surface transition-colors">
-            Get Started
-          </button>
-        </div>
-
-        <div className="bento-card p-10 border-cyan-glow/30 relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-cyan-glow shadow-[0_0_20px_var(--cyan-glow)]" />
-          <div className="absolute top-4 right-4 px-3 py-1 bg-cyan-glow/10 text-cyan-glow text-xs font-bold rounded-full">MOST POPULAR</div>
-          <h3 className="text-2xl font-bold font-display">Pro</h3>
-          <div className="mt-4 flex items-baseline gap-2">
-            <span className="text-5xl font-bold font-display">$49</span>
-            <span className="text-muted-foreground font-medium">/ month</span>
-          </div>
-          <p className="mt-4 text-muted-foreground text-sm">For serious traders who want to automate their edge.</p>
-          <ul className="mt-8 space-y-4">
-            {["Unlimited bots", "Live exchange trading", "Real-time SMS alerts", "Priority support", "Advanced Pine Script Webhooks"].map((feature, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm font-medium">
-                <Check className="w-5 h-5 text-cyan-glow" /> {feature}
-              </li>
-            ))}
-          </ul>
-          <button className="w-full mt-10 py-4 rounded-xl bg-foreground text-background font-bold hover:scale-[1.02] transition-transform shadow-xl">
-            Upgrade to Pro
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ------------------ FAQ ------------------ */
 
 function Faq() {
@@ -545,29 +444,5 @@ function Faq() {
         ))}
       </Accordion>
     </section>
-  );
-}
-
-/* ------------------ Footer ------------------ */
-
-function Footer() {
-  return (
-    <footer className="border-t border-border/50 bg-background pt-20 pb-10">
-      <div className="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <div className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-            <div className="bg-foreground text-background font-display font-bold text-sm px-1.5 py-0.5 rounded-sm">EM</div>
-            <span className="font-display font-bold text-sm tracking-widest uppercase">Expertz Move</span>
-          </div>
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Expertz Move. All rights reserved.</p>
-        </div>
-        
-        <div className="flex items-center gap-6 text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors"><Twitter className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-foreground transition-colors"><Instagram className="w-5 h-5" /></a>
-          <a href="#" className="hover:text-foreground transition-colors"><Youtube className="w-5 h-5" /></a>
-        </div>
-      </div>
-    </footer>
   );
 }

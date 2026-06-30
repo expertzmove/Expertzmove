@@ -18,9 +18,9 @@ export function Nav() {
           <a href="/#platform" className="hover:text-foreground transition-colors">
             Platform
           </a>
-          <a href="/#strategies" className="hover:text-foreground transition-colors">
-            Strategies
-          </a>
+          <Link to="/tools-and-bots" className="hover:text-foreground transition-colors">
+            Tools and Bots
+          </Link>
           <Link to="/pricing" className="hover:text-foreground transition-colors">
             Pricing
           </Link>

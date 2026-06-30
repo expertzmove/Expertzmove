@@ -176,11 +176,25 @@ const STRATEGY_PRESETS = [
   },
 ];
 
-const SIGNAL_FEED = [
-  { time: "09:15", pair: "BTCUSDT", action: "AI trend score flipped bullish", tone: "green" },
-  { time: "10:40", pair: "NVDA", action: "TradingView overlay printed a pullback zone", tone: "cyan" },
-  { time: "12:05", pair: "ETHUSDT", action: "Risk lock paused new entries after volatility spike", tone: "red" },
-  { time: "14:25", pair: "SOLUSDT", action: "Breakout Scout moved stop to breakeven", tone: "green" },
+const MANUAL_TOOLS = [
+  {
+    name: "Live AI Signals",
+    icon: Activity,
+    status: "Active",
+    desc: "Real-time market alerts",
+  },
+  {
+    name: "Risk Calculator",
+    icon: Target,
+    status: "In Development",
+    desc: "Position sizing & risk guards",
+  },
+  {
+    name: "Custom Indicators",
+    icon: LineChart,
+    status: "In Development",
+    desc: "Proprietary TradingView scripts",
+  },
 ];
 
 const FAQ = [
@@ -305,10 +319,10 @@ function BentoSection() {
           </div>
         </div>
 
-        {/* Bento Item 2: Strategy Lab Mini */}
+        {/* Bento Item 2: Automated Bots */}
         <div className="bento-card bento-card-hover col-span-12 md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between" id="strategies">
           <div>
-            <h3 className="font-display text-2xl font-bold">Strategy Lab</h3>
+            <h3 className="font-display text-2xl font-bold">Automated Bots</h3>
             <p className="text-muted-foreground mt-2 mb-6">Choose from battle-tested presets or build your own rules engine.</p>
             <div className="space-y-3">
               {STRATEGY_PRESETS.map((p, i) => (
@@ -328,23 +342,29 @@ function BentoSection() {
           </div>
         </div>
 
-        {/* Bento Item 3: Live Signal Feed */}
-        <div className="bento-card bento-card-hover col-span-12 md:col-span-6 lg:col-span-4 p-8">
-          <div className="flex items-center gap-2 mb-6">
-            <Activity className="w-5 h-5 text-cyan-glow animate-pulse" />
-            <h3 className="font-display text-2xl font-bold">Live Signals</h3>
-          </div>
-          <div className="relative pl-4 space-y-6 before:absolute before:inset-y-0 before:left-[7px] before:w-px before:bg-border">
-            {SIGNAL_FEED.map((feed, i) => (
-              <div key={i} className="relative pl-6">
-                <span className={`absolute left-[-13px] top-1 w-3 h-3 rounded-full border-2 border-background ${feed.tone === "green" ? "bg-cyan-glow" : feed.tone === "cyan" ? "bg-foreground" : "bg-destructive"}`} />
-                <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground mb-1">
-                  <span>{feed.time}</span>
-                  <span className="text-foreground font-bold">{feed.pair}</span>
+        {/* Bento Item 3: Manual Tools */}
+        <div className="bento-card bento-card-hover col-span-12 md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-2 mb-6">
+              <CandlestickChart className="w-5 h-5 text-cyan-glow" />
+              <h3 className="font-display text-2xl font-bold">Manual Tools</h3>
+            </div>
+            <p className="text-muted-foreground mt-2 mb-6">Everything you need to execute trades with precision and edge.</p>
+            <div className="space-y-3">
+              {MANUAL_TOOLS.map((t, i) => (
+                <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-border/50 bg-surface/30 hover:border-cyan-glow/30 transition-colors cursor-pointer group">
+                  <div className="w-10 h-10 rounded-lg bg-cyan-glow/10 border border-cyan-glow/20 grid place-items-center group-hover:bg-cyan-glow/20 transition-colors">
+                    <t.icon className="w-5 h-5 text-cyan-glow" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm">{t.name}</h4>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {t.status === "Active" ? t.desc : "In Development"}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-sm">{feed.action}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 

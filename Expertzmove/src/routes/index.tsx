@@ -238,8 +238,15 @@ const CANDLES = Array.from({ length: 25 }).map((_, i) => {
 function CandleBackground() {
   const items = [...CANDLES, ...CANDLES];
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.15] mix-blend-screen" aria-hidden="true">
-      <div className="flex gap-6 md:gap-12 h-full animate-candle-scroll w-max pr-6 md:pr-12 pt-20">
+    <div 
+      className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.15] mix-blend-plus-lighter" 
+      aria-hidden="true"
+      style={{
+        maskImage: 'linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)',
+      }}
+    >
+      <div className="flex gap-6 md:gap-12 h-full animate-candle-scroll w-max pr-6 md:pr-12 pt-20 blur-[2px]">
         {items.map((c, i) => (
           <div key={i} className="relative w-4 md:w-12 shrink-0 h-full flex flex-col justify-center">
             {/* Wick */}

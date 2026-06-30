@@ -1292,7 +1292,8 @@ function ChartSection() {
     ref.current.innerHTML = "";
     const container = document.createElement("div");
     container.className = "tradingview-widget-container__widget";
-    container.style.height = "500px";
+    container.style.height = "100%";
+    container.style.width = "100%";
     ref.current.appendChild(container);
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -1325,11 +1326,11 @@ function ChartSection() {
         </Reveal>
         <Reveal delay={120}>
           <div className="mt-12 glass-card p-2 md:p-3">
-            <div
-              ref={ref}
-              className="tradingview-widget-container rounded-md overflow-hidden"
-              style={{ height: 500 }}
-            />
+              <div
+                ref={ref}
+                className="tradingview-widget-container rounded-md overflow-hidden w-full"
+                style={{ height: 750 }}
+              />
           </div>
         </Reveal>
       </div>
@@ -1355,7 +1356,7 @@ function YoutubeVideo() {
             <div className="relative w-full aspect-video rounded-md overflow-hidden bg-surface flex flex-col items-center justify-center border border-border/50">
               <iframe
                 className="absolute top-0 left-0 w-full h-full z-10"
-                src="https://www.youtube.com/embed?listType=user_uploads&list=Expertsmove"
+                src="https://www.youtube.com/embed/videoseries?list=UUjl3KUH4VZ2TtGDOZU1x5hw"
                 title="Expertz Move YouTube Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

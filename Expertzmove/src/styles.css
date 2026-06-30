@@ -37,49 +37,49 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
 
-  --font-display: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 :root {
   --radius: 0.625rem;
 
-  /* Deep space dark theme */
-  --background: oklch(0.13 0.02 260);
-  --foreground: oklch(0.97 0.01 240);
-  --surface: oklch(0.17 0.025 260);
-  --surface-elevated: oklch(0.21 0.03 260);
+  /* Premium Obsidian dark theme */
+  --background: oklch(0.12 0.01 240);
+  --foreground: oklch(0.98 0.005 240);
+  --surface: oklch(0.14 0.01 240);
+  --surface-elevated: oklch(0.18 0.01 240);
 
-  --card: oklch(0.17 0.025 260);
-  --card-foreground: oklch(0.97 0.01 240);
-  --popover: oklch(0.17 0.025 260);
-  --popover-foreground: oklch(0.97 0.01 240);
+  --card: oklch(0.14 0.01 240);
+  --card-foreground: oklch(0.98 0.005 240);
+  --popover: oklch(0.14 0.01 240);
+  --popover-foreground: oklch(0.98 0.005 240);
 
-  --primary: oklch(0.85 0.18 210); /* electric cyan #00E5FF */
-  --primary-foreground: oklch(0.13 0.02 260);
-  --secondary: oklch(0.22 0.03 260);
-  --secondary-foreground: oklch(0.97 0.01 240);
-  --muted: oklch(0.22 0.03 260);
-  --muted-foreground: oklch(0.7 0.02 250);
-  --accent: oklch(0.22 0.03 260);
-  --accent-foreground: oklch(0.97 0.01 240);
-  --destructive: oklch(0.65 0.24 25);
-  --destructive-foreground: oklch(0.97 0.01 240);
+  --primary: oklch(0.95 0 0); /* Metallic white */
+  --primary-foreground: oklch(0.12 0.01 240);
+  --secondary: oklch(0.18 0.01 240);
+  --secondary-foreground: oklch(0.98 0.005 240);
+  --muted: oklch(0.18 0.01 240);
+  --muted-foreground: oklch(0.65 0.01 240);
+  --accent: oklch(0.18 0.01 240);
+  --accent-foreground: oklch(0.98 0.005 240);
+  --destructive: oklch(0.65 0.15 20);
+  --destructive-foreground: oklch(0.98 0.005 240);
 
-  --border: oklch(0.27 0.03 260);
-  --input: oklch(0.22 0.03 260);
-  --ring: oklch(0.85 0.18 210);
+  --border: oklch(0.22 0.01 240);
+  --input: oklch(0.18 0.01 240);
+  --ring: oklch(0.95 0 0);
 
-  --cyan-glow: oklch(0.85 0.18 210); /* #00E5FF */
-  --neon-green: oklch(0.85 0.24 150); /* #00FF88 */
-  --neon-red: oklch(0.68 0.24 25);
-  --violet-glow: oklch(0.65 0.22 290); /* #7B4FFF */
+  --cyan-glow: oklch(0.4 0.1 260); /* Subtle indigo */
+  --neon-green: oklch(0.5 0.1 250); /* Subtle blue */
+  --neon-red: oklch(0.65 0.15 20);
+  --violet-glow: oklch(0.35 0.1 280); /* Deep indigo */
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.13 0.02 260 / 0.85), oklch(0.13 0.02 260 / 0.7));
-  --gradient-cta: linear-gradient(90deg, var(--cyan-glow), var(--violet-glow));
-  --shadow-glow-cyan: 0 0 40px oklch(0.85 0.18 210 / 0.35);
-  --shadow-glow-green: 0 0 30px oklch(0.85 0.24 150 / 0.3);
+  --gradient-hero: linear-gradient(135deg, oklch(0.12 0.01 240 / 0.9), oklch(0.12 0.01 240 / 0.75));
+  --gradient-cta: linear-gradient(90deg, oklch(0.4 0.1 260), oklch(0.35 0.1 280));
+  --shadow-glow-cyan: 0 0 40px oklch(0.4 0.1 260 / 0.2);
+  --shadow-glow-green: 0 0 30px oklch(0.5 0.1 250 / 0.15);
 }
 
 @layer base {
@@ -106,18 +106,19 @@
 
 /* Glassmorphism card */
 @utility glass-card {
-  background: linear-gradient(180deg, oklch(0.21 0.03 260 / 0.6), oklch(0.17 0.025 260 / 0.4));
-  backdrop-filter: blur(14px);
-  border: 1px solid oklch(0.85 0.18 210 / 0.15);
+  background: linear-gradient(180deg, oklch(0.18 0.01 240 / 0.4), oklch(0.14 0.01 240 / 0.2));
+  backdrop-filter: blur(24px);
+  border: 1px solid oklch(0.98 0.005 240 / 0.08);
   border-radius: var(--radius-lg);
   transition: all 0.35s ease;
+  box-shadow: inset 0 1px 0 0 oklch(0.98 0.005 240 / 0.05);
 }
 
 @utility glass-card-hover {
   &:hover {
-    border-color: oklch(0.85 0.18 210 / 0.5);
-    box-shadow: 0 0 30px oklch(0.85 0.18 210 / 0.2);
-    transform: translateY(-4px);
+    border-color: oklch(0.98 0.005 240 / 0.15);
+    box-shadow: inset 0 1px 0 0 oklch(0.98 0.005 240 / 0.1), 0 8px 24px -8px oklch(0 0 0 / 0.5);
+    transform: translateY(-2px);
   }
 }
 
@@ -141,12 +142,9 @@
   animation: ticker-scroll 40s linear infinite;
 }
 
-/* Grid background */
+/* Refined spotlight background */
 @utility bg-grid {
-  background-image:
-    linear-gradient(oklch(0.85 0.18 210 / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.85 0.18 210 / 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background: radial-gradient(circle at top center, oklch(0.2 0.02 250 / 0.15), transparent 60%);
 }
 
 @keyframes pulse-glow {

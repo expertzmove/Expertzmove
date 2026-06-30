@@ -149,7 +149,7 @@ const STATS = [
 
 const STRATEGY_PRESETS = [
   {
-    name: "Balanced AI",
+    name: "Vertex Edge",
     icon: BrainCircuit,
     winRate: 63,
     edge: 0.34,
@@ -157,20 +157,20 @@ const STRATEGY_PRESETS = [
     focus: "Multi-timeframe trend + news filter",
   },
   {
-    name: "Grid Hunter",
+    name: "Coming soon",
     icon: Radar,
-    winRate: 58,
-    edge: 0.29,
-    drawdown: 5.4,
-    focus: "Sideways ranges with volatility guard",
+    winRate: 0,
+    edge: 0,
+    drawdown: 0,
+    focus: "In development...",
   },
   {
-    name: "Breakout Scout",
+    name: "Coming soon",
     icon: Zap,
-    winRate: 47,
-    edge: 0.52,
-    drawdown: 10.6,
-    focus: "Volume expansion and breakout retests",
+    winRate: 0,
+    edge: 0,
+    drawdown: 0,
+    focus: "In development...",
   },
 ];
 
@@ -364,7 +364,9 @@ function BentoSection() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm">{p.name}</h4>
-                    <p className="text-xs text-muted-foreground mt-0.5">{p.winRate}% Win Rate</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {p.name === "Coming soon" ? "In Development" : `${p.winRate}% Win Rate`}
+                    </p>
                   </div>
                 </div>
               ))}

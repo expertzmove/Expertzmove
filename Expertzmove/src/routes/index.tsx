@@ -212,30 +212,44 @@ const FAQ = [
   },
 ];
 
-const CANDLES = Array.from({ length: 40 }).map((_, i) => {
-  const isGreen = Math.random() > 0.45;
-  const height = 15 + Math.random() * 40; 
-  const top = 20 + Math.random() * 30; 
-  const wickTop = top - Math.random() * 15;
-  const wickBottom = top + height + Math.random() * 15;
+// Generate a sequence of big candles that form a strong upward trend (growing towards right side)
+const CANDLES = Array.from({ length: 25 }).map((_, i) => {
+  // To make it an upward trend from left to right, the 'top' value must decrease as 'i' increases.
+  // i goes from 0 to 24.
+  // Let's make it start near 70% (bottom) and end near 15% (top).
+  const progress = i / 24; // 0 to 1
+  const baseTop = 70 - (progress * 55); // 70 down to 15
+  
+  // Add some local volatility (pullbacks)
+  const isPullback = i % 4 === 3; // Every 4th candle is a red pullback
+  const isGreen = !isPullback;
+  
+  const height = 15 + Math.random() * 20; // 15% to 35% height (big bodies)
+  
+  // If it's a pullback (red), it might drop a bit lower.
+  const top = baseTop + (isPullback ? Math.random() * 10 : (Math.random() - 0.5) * 5);
+  
+  const wickTop = top - (5 + Math.random() * 10);
+  const wickBottom = top + height + (5 + Math.random() * 10);
+  
   return { isGreen, height, top, wickTop, wickBottom };
 });
 
 function CandleBackground() {
   const items = [...CANDLES, ...CANDLES];
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 mix-blend-screen" aria-hidden="true">
-      <div className="flex gap-4 md:gap-8 h-full animate-candle-scroll w-max pr-4 md:pr-8">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.15] mix-blend-screen" aria-hidden="true">
+      <div className="flex gap-6 md:gap-12 h-full animate-candle-scroll w-max pr-6 md:pr-12 pt-20">
         {items.map((c, i) => (
-          <div key={i} className="relative w-2 md:w-4 shrink-0 h-full flex flex-col justify-center">
+          <div key={i} className="relative w-4 md:w-12 shrink-0 h-full flex flex-col justify-center">
             {/* Wick */}
             <div 
-              className={`absolute left-1/2 -translate-x-1/2 w-px md:w-0.5 rounded-full ${c.isGreen ? 'bg-cyan-glow' : 'bg-destructive'} opacity-60`} 
+              className={`absolute left-1/2 -translate-x-1/2 w-0.5 md:w-1 rounded-full ${c.isGreen ? 'bg-emerald-500' : 'bg-rose-500'} opacity-70`} 
               style={{ top: `${c.wickTop}%`, bottom: `${100 - c.wickBottom}%` }} 
             />
             {/* Body */}
             <div 
-              className={`absolute left-0 w-full rounded-sm md:rounded-md ${c.isGreen ? 'bg-cyan-glow' : 'bg-destructive'} shadow-[0_0_15px_currentColor] opacity-90`} 
+              className={`absolute left-0 w-full rounded-sm md:rounded-md ${c.isGreen ? 'bg-emerald-500' : 'bg-rose-500'} shadow-[0_0_30px_currentColor] opacity-100`} 
               style={{ top: `${c.top}%`, height: `${c.height}%` }} 
             />
           </div>

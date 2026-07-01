@@ -15,20 +15,20 @@ export const Route = createFileRoute("/tools-and-bots")({
 
 const BOTS = [
   {
-    name: "Vertex Edge",
-    icon: BrainCircuit,
-    status: "Live",
-    winRate: 63,
-    edge: 0.34,
-    desc: "Multi-timeframe trend + news filter. Automatically avoids high-impact news events while riding macro trends.",
-  },
-  {
     name: "Power Ai bot",
     icon: Radar,
     status: "Live",
     winRate: 58,
     edge: 0.29,
     desc: "Momentum breakout and volatility guard. Specifically built for high-volume breakout setups with tight stops.",
+  },
+  {
+    name: "Trend Analyzer",
+    icon: BrainCircuit,
+    status: "Coming soon",
+    winRate: 0,
+    edge: 0,
+    desc: "Multi-timeframe trend + news filter. Automatically avoids high-impact news events while riding macro trends.",
   },
   {
     name: "Grid Hunter",
@@ -42,7 +42,7 @@ const BOTS = [
 
 const TOOLS = [
   {
-    name: "Live AI Signals",
+    name: "Vertex Edge",
     icon: Activity,
     status: "Live",
     desc: "Real-time market alerts directly in your dashboard or via webhook, powered by our custom ML models.",
@@ -50,7 +50,7 @@ const TOOLS = [
   {
     name: "TradingView Pro Integration",
     icon: CandlestickChart,
-    status: "Live",
+    status: "Coming soon",
     desc: "Advanced charting & indicators directly injected into the platform, allowing seamless manual execution.",
   },
   {

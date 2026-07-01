@@ -151,20 +151,20 @@ const STATS = [
 
 const STRATEGY_PRESETS = [
   {
-    name: "Vertex Edge",
-    icon: BrainCircuit,
-    winRate: 63,
-    edge: 0.34,
-    drawdown: 7.8,
-    focus: "Multi-timeframe trend + news filter",
-  },
-  {
     name: "Power Ai bot",
     icon: Radar,
     winRate: 58,
     edge: 0.29,
     drawdown: 5.4,
     focus: "Momentum breakout and volatility guard",
+  },
+  {
+    name: "Trend Analyzer",
+    icon: BrainCircuit,
+    winRate: 0,
+    edge: 0,
+    drawdown: 0,
+    focus: "In development...",
   },
   {
     name: "Coming soon",
@@ -178,7 +178,7 @@ const STRATEGY_PRESETS = [
 
 const MANUAL_TOOLS = [
   {
-    name: "Live AI Signals",
+    name: "Vertex Edge",
     icon: Activity,
     status: "Active",
     desc: "Real-time market alerts",

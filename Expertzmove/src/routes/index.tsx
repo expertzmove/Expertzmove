@@ -159,6 +159,14 @@ const STRATEGY_PRESETS = [
     focus: "Momentum breakout and volatility guard",
   },
   {
+    name: "Custom MQL5 Bots",
+    icon: FileCode2,
+    winRate: 0,
+    edge: 0,
+    drawdown: 0,
+    focus: "Bring your own strategy — we code it.",
+  },
+  {
     name: "Trend Analyzer",
     icon: BrainCircuit,
     winRate: 0,
@@ -388,7 +396,7 @@ function BentoSection() {
                   <div>
                     <h4 className="font-bold text-sm">{p.name}</h4>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      {p.name === "Coming soon" ? "In Development" : `${p.winRate}% Win Rate`}
+                      {p.name === "Custom MQL5 Bots" ? "Built for you" : p.winRate > 0 ? `${p.winRate}% Win Rate` : "In Development"}
                     </p>
                   </div>
                 </div>

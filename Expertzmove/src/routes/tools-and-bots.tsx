@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Activity, BrainCircuit, CandlestickChart, LineChart, Radar, Target, Zap, Bot, Wrench } from "lucide-react";
+import { Activity, BrainCircuit, CandlestickChart, LineChart, Radar, Target, Zap, Bot, Wrench, FileCode2, Check } from "lucide-react";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 
@@ -120,7 +120,7 @@ function ToolsAndBotsPage() {
         </div>
 
         {/* Tools Section */}
-        <div>
+        <div className="mb-20">
           <div className="flex items-center gap-3 mb-8">
             <Wrench className="w-8 h-8 text-emerald-500" />
             <h2 className="font-display text-3xl font-bold">Manual Tools</h2>
@@ -144,6 +144,55 @@ function ToolsAndBotsPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Custom Development Section */}
+        <div>
+          <div className="flex items-center gap-3 mb-8">
+            <FileCode2 className="w-8 h-8 text-violet-glow" />
+            <h2 className="font-display text-3xl font-bold">Custom Development</h2>
+          </div>
+          <div className="bento-card p-8 border-violet-glow/20 shadow-[0_0_15px_rgba(var(--color-violet-glow),0.1)] flex flex-col md:flex-row gap-8 items-start">
+            <div className="flex-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                <h3 className="font-display text-2xl font-bold">Custom MQL5 Bot Development</h3>
+                <div className="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase border bg-violet-glow/10 text-violet-glow border-violet-glow/20">
+                  LIVE
+                </div>
+              </div>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                Bring your own strategy — we'll code it into a fully automated MT5 Expert Advisor, backtested and ready to deploy. Built to your exact rules.
+              </p>
+              
+              <ul className="grid sm:grid-cols-2 gap-4 mb-8">
+                {[
+                  "Your strategy, your rules",
+                  "Full backtesting included",
+                  "MetaTrader 5 compatible",
+                  "Delivered as a ready-to-run .ex5 file"
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm font-medium">
+                    <Check className="w-5 h-5 text-violet-glow shrink-0" /> 
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="w-full md:w-auto shrink-0 flex flex-col justify-center bg-surface/50 p-6 rounded-2xl border border-border">
+              <a 
+                href="https://t.me/Xonix_Support" 
+                target="_blank" 
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-foreground text-background font-bold hover:scale-[1.02] transition-transform shadow-xl whitespace-nowrap"
+              >
+                Discuss Your Strategy
+              </a>
+              <p className="text-xs text-center text-muted-foreground mt-4">
+                Ping us on Telegram to get started.
+              </p>
+            </div>
           </div>
         </div>
       </main>

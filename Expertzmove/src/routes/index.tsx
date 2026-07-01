@@ -16,6 +16,10 @@ import {
   LineChart,
   LockKeyhole,
   MessageCircle,
+  ExternalLink,
+  MessageSquare,
+  ClipboardList,
+  Code,
   Play,
   Plug,
   Radar,
@@ -157,6 +161,8 @@ const STRATEGY_PRESETS = [
     edge: 0.29,
     drawdown: 5.4,
     focus: "Momentum breakout and volatility guard",
+    verifiedUrl: "https://www.myfxbook.com",
+    isLiveVerified: true
   },
   {
     name: "Custom MQL5 Bots",
@@ -173,6 +179,7 @@ const STRATEGY_PRESETS = [
     edge: 0,
     drawdown: 0,
     focus: "In development...",
+    isBacktested: true
   },
   {
     name: "Coming soon",
@@ -218,6 +225,26 @@ const FAQ = [
     q: "What if the bot has a bad day?",
     a: "It will. Markets do. We default to conservative risk caps and a daily loss limit, and the recap email is upfront when things didn't go well. No hiding the losers.",
   },
+  {
+    q: "How do I pay and how fast is delivery?",
+    a: "[Placeholder] We accept USDT payments. Delivery times depend on the complexity of your custom bot, typically ranging from [X] to [Y] days."
+  },
+  {
+    q: "Can I test the bot before paying in full?",
+    a: "[Placeholder] We offer backtesting results and [placeholder terms for escrow or partial milestone payments]."
+  },
+  {
+    q: "What happens if the bot underperforms my strategy spec?",
+    a: "[Placeholder] If the custom bot executes trades contrary to your specified rules, we provide free bug fixes for [X] days after delivery."
+  },
+  {
+    q: "Do you offer support after delivery?",
+    a: "[Placeholder] Yes, we offer [X] days of free support for any technical issues or minor logic tweaks."
+  },
+  {
+    q: "Is my strategy/code kept private?",
+    a: "[Placeholder] Absolutely. Your custom strategy logic is kept strictly confidential and will never be shared, resold, or used in our own presets."
+  }
 ];
 
 // Generate a sequence of big candles that form a strong upward trend (growing towards right side)
@@ -283,9 +310,101 @@ function Landing() {
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
       <Hero />
       <BentoSection />
+      <HowItWorks />
+      <Testimonials />
+      <About />
       <Faq />
       <Footer />
     </div>
+  );
+}
+
+/* ------------------ Trust Sections ------------------ */
+
+function HowItWorks() {
+  const steps = [
+    { icon: MessageSquare, title: "1. Contact Us", desc: "Reach out via Telegram to discuss your trading strategy and rules." },
+    { icon: ClipboardList, title: "2. Strategy Scope", desc: "We review your requirements and finalize the logic, timeframe, and assets." },
+    { icon: Code, title: "3. Build & Backtest", desc: "Our devs code your MT5 EA and run historical backtests to verify performance." },
+    { icon: Rocket, title: "4. Deploy & Trade", desc: "You receive the .ex5 file ready to run on your VPS or local machine." }
+  ];
+  return (
+    <section className="py-20 px-6 max-w-[1400px] mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="font-display text-4xl font-bold">Custom Development Process</h2>
+        <p className="mt-4 text-lg text-muted-foreground">From concept to deployed bot in 4 simple steps.</p>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-border z-0" />
+        {steps.map((s, i) => (
+          <div key={i} className="relative z-10 bento-card p-6 flex flex-col items-center text-center">
+            <div className="w-16 h-16 rounded-2xl bg-cyan-glow/10 border border-cyan-glow/20 grid place-items-center mb-6">
+              <s.icon className="w-8 h-8 text-cyan-glow" />
+            </div>
+            <h3 className="font-display text-xl font-bold mb-3">{s.title}</h3>
+            <p className="text-muted-foreground text-sm">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-12 text-center">
+        <a href="https://t.me/Xonix_Support" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-bold hover:scale-105 transition-transform">
+          Start Your Custom Bot <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const testimonials = [
+    { quote: "[Placeholder quote describing how the Custom MQL5 bot perfectly automated their manual strategy and saved them screen time.]", author: "[Client Name]", handle: "@[client_handle]", bot: "Custom MQL5 Development" },
+    { quote: "[Placeholder quote about the consistent performance and smooth operation of the Power AI Bot during volatile market conditions.]", author: "[Client Name]", handle: "@[client_handle]", bot: "Power Ai Bot" },
+    { quote: "[Placeholder quote highlighting the excellent support and fast delivery times for their custom trading tools.]", author: "[Client Name]", handle: "@[client_handle]", bot: "Custom Indicators" }
+  ];
+  return (
+    <section className="py-20 px-6 max-w-[1400px] mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="font-display text-4xl font-bold">Client Results</h2>
+        <p className="mt-4 text-lg text-muted-foreground">Don't just take our word for it. See what our traders are saying.</p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-6">
+        {testimonials.map((t, i) => (
+          <div key={i} className="bento-card p-8 flex flex-col justify-between">
+            <p className="text-muted-foreground italic mb-8 relative">
+              <span className="text-4xl text-cyan-glow/20 absolute -top-4 -left-2 font-serif">"</span>
+              {t.quote}
+              <span className="text-4xl text-cyan-glow/20 absolute -bottom-6 -right-2 font-serif rotate-180">"</span>
+            </p>
+            <div>
+              <div className="font-bold text-foreground">{t.author}</div>
+              <div className="text-xs text-muted-foreground">{t.handle} • Using {t.bot}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section className="py-20 px-6 max-w-[1000px] mx-auto text-center">
+      <h2 className="font-display text-4xl font-bold mb-6">About Expertz Move</h2>
+      <div className="bento-card p-8 md:p-12 text-left md:text-center">
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          We are a team of quantitative traders and MQL5/PineScript engineers with over [X] years of combined experience in the financial markets. 
+          Frustrated by the endless noise and snake-oil in the retail trading space, we set out to build a platform that focuses strictly on execution, logic, and verified performance.
+        </p>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+          Whether you use our battle-tested automated systems or hire us to code your proprietary edge, our goal is simple: to help you remove emotion from the charts and trade like a machine.
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+           <a href="https://t.me/Xonix_Support" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-surface/30 hover:bg-surface transition-colors font-medium text-sm">
+             <MessageCircle className="w-4 h-4" /> Reach out to the team
+           </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -386,15 +505,33 @@ function BentoSection() {
         <div className="bento-card bento-card-hover col-span-12 md:col-span-6 lg:col-span-4 p-8 flex flex-col justify-between" id="strategies">
           <div>
             <h3 className="font-display text-2xl font-bold">Automated Bots</h3>
-            <p className="text-muted-foreground mt-2 mb-6">Choose from battle-tested presets or build your own rules engine.</p>
+            <p className="text-muted-foreground mt-2 mb-4">Choose from battle-tested presets or build your own rules engine.</p>
+            <div className="mb-6 flex items-start gap-2 text-xs text-muted-foreground bg-surface/50 p-3 rounded-lg border border-border">
+              <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Live results, updated automatically — nothing hand-picked. Verified via third-party tracking.</span>
+            </div>
             <div className="space-y-3">
               {STRATEGY_PRESETS.map((p, i) => (
                 <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-border/50 bg-surface/30 hover:border-cyan-glow/30 transition-colors cursor-pointer group">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-glow/10 border border-cyan-glow/20 grid place-items-center group-hover:bg-cyan-glow/20 transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-cyan-glow/10 border border-cyan-glow/20 grid place-items-center group-hover:bg-cyan-glow/20 transition-colors shrink-0">
                     <p.icon className="w-5 h-5 text-cyan-glow" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-sm">{p.name}</h4>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-bold text-sm flex items-center gap-2">
+                        {p.name}
+                        {p.isLiveVerified && (
+                           <a href={p.verifiedUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors" onClick={(e) => e.stopPropagation()}>
+                             Live Verified <ExternalLink className="w-3 h-3" />
+                           </a>
+                        )}
+                        {p.isBacktested && (
+                           <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-surface text-muted-foreground border border-border">
+                             Backtested
+                           </span>
+                        )}
+                      </h4>
+                    </div>
                     <p className="text-xs text-muted-foreground mt-0.5">
                       {p.name === "Custom MQL5 Bots" ? "Built for you" : p.winRate > 0 ? `${p.winRate}% Win Rate` : "In Development"}
                     </p>

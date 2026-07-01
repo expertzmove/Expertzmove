@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck, Wallet, ArrowRight, MessageCircle } from "lucide-react";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 
@@ -122,6 +122,55 @@ function PricingPage() {
               <button className="w-full mt-10 py-4 rounded-xl bg-foreground text-background font-bold hover:scale-[1.02] transition-transform shadow-xl">
                 Upgrade to Pro
               </button>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 3: Payment & Security */}
+        <section className="pt-12">
+          <div className="bento-card p-10 max-w-4xl mx-auto border-emerald-500/20 bg-emerald-500/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+              <ShieldCheck className="w-48 h-48 text-emerald-500" />
+            </div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6">
+                <Wallet className="w-8 h-8 text-emerald-500" />
+                <h2 className="font-display text-3xl font-bold">Secure Payments</h2>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <p className="text-muted-foreground text-lg mb-6">
+                    We accept payments securely via <strong className="text-foreground">USDT</strong>. 
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3 text-sm">
+                      <Check className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                      <span><strong>Supported Networks:</strong> [Placeholder: TRC20 / ERC20]</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-sm">
+                      <Check className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                      <span><strong>Process:</strong> [Placeholder: Payment confirmed on-chain before delivery / Escrow available on request]</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-sm">
+                      <Check className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> 
+                      <span><strong>Verified Wallet:</strong> Always verify you are sending to our official address before confirming any transaction.</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-background/50 border border-border p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                  <MessageCircle className="w-10 h-10 text-cyan-glow mb-4" />
+                  <h3 className="font-bold text-lg mb-2">Have questions before paying?</h3>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Chat with our support team to verify details and discuss your needs.
+                  </p>
+                  <a href="https://t.me/Xonix_Support" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-bold hover:scale-105 transition-transform">
+                    Chat on Telegram <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

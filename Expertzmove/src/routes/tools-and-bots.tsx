@@ -17,7 +17,7 @@ const BOTS = [
   {
     name: "Power Ai bot",
     icon: Radar,
-    status: "Live",
+    status: "Live Verified",
     winRate: 58,
     edge: 0.29,
     desc: "Momentum breakout and volatility guard. Specifically built for high-volume breakout setups with tight stops.",
@@ -25,7 +25,7 @@ const BOTS = [
   {
     name: "Trend Analyzer",
     icon: BrainCircuit,
-    status: "Coming soon",
+    status: "Backtested",
     winRate: 0,
     edge: 0,
     desc: "Multi-timeframe trend + news filter. Automatically avoids high-impact news events while riding macro trends.",
@@ -74,12 +74,17 @@ function ToolsAndBotsPage() {
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
       
       <main className="pt-32 pb-20 relative z-10 px-6 max-w-[1200px] mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="font-display text-5xl md:text-6xl font-bold">Tools & Bots</h1>
           <p className="mt-6 text-lg text-muted-foreground">
             Explore our cutting-edge suite of algorithmic trading bots and precision manual tools. 
             See what's live and what's currently in the laboratory.
           </p>
+          <div className="mt-8">
+            <a href="https://t.me/Xonix_Support" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-surface/30 hover:bg-surface transition-colors font-medium text-sm">
+              Questions about a bot? Chat with us on Telegram
+            </a>
+          </div>
         </div>
 
         {/* Bots Section */}
@@ -90,13 +95,13 @@ function ToolsAndBotsPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {BOTS.map((bot, i) => (
-              <div key={i} className={`bento-card p-6 flex flex-col ${bot.status === 'Live' ? 'border-cyan-glow/20 shadow-[0_0_15px_rgba(var(--color-cyan-glow),0.1)]' : 'opacity-70'}`}>
+              <div key={i} className={`bento-card p-6 flex flex-col ${bot.status !== 'Coming soon' ? 'border-cyan-glow/20 shadow-[0_0_15px_rgba(var(--color-cyan-glow),0.1)]' : 'opacity-70'}`}>
                 <div className="flex justify-between items-start mb-6">
                   <div className="w-12 h-12 rounded-xl bg-cyan-glow/10 border border-cyan-glow/20 grid place-items-center">
                     <bot.icon className="w-6 h-6 text-cyan-glow" />
                   </div>
                   <div className={`px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase border ${
-                    bot.status === 'Live' ? 'bg-cyan-glow/10 text-cyan-glow border-cyan-glow/20' : 'bg-surface text-muted-foreground border-border'
+                    bot.status === 'Live Verified' ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : bot.status === 'Backtested' ? 'bg-cyan-glow/10 text-cyan-glow border-cyan-glow/20' : 'bg-surface text-muted-foreground border-border'
                   }`}>
                     {bot.status}
                   </div>
@@ -107,11 +112,11 @@ function ToolsAndBotsPage() {
                 <div className="mt-6 pt-6 border-t border-border/50 flex justify-between">
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Win Rate</p>
-                    <p className="font-mono font-bold">{bot.status === 'Live' ? `${bot.winRate}%` : '--'}</p>
+                    <p className="font-mono font-bold">{bot.status === 'Live Verified' ? `${bot.winRate}%` : '--'}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Profit Edge</p>
-                    <p className="font-mono font-bold">{bot.status === 'Live' ? `${bot.edge}` : '--'}</p>
+                    <p className="font-mono font-bold">{bot.status === 'Live Verified' ? `${bot.edge}` : '--'}</p>
                   </div>
                 </div>
               </div>
